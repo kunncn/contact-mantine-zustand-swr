@@ -1,10 +1,16 @@
-import { HeaderComponent } from "../components";
+import {
+  CategoryComponent,
+  HeaderComponent,
+  ProductComponent,
+} from "../components";
 
 const DashboardPage = () => {
   return (
-    <div>
+    <>
       <HeaderComponent />
-    </div>
+      <CategoryComponent />
+      <ProductComponent />
+    </>
   );
 };
 

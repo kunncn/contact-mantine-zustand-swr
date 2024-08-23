@@ -1,4 +1,4 @@
-import { DashboardPage, SingleProductPage } from "./pages";
+import { CartPage, DashboardPage, SingleProductPage } from "./pages";
 import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 
@@ -7,7 +7,8 @@ const App = () => {
     <>
       <Routes>
         <Route path="/" element={<DashboardPage />} />
-        <Route path="/products/:productId" element={<SingleProductPage />} />
+        <Route path="/products/:productTitle" element={<SingleProductPage />} />
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
     </>
   );

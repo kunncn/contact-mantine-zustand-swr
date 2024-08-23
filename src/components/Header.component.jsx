@@ -1,12 +1,21 @@
 import { Container } from "@mantine/core";
 import { Group } from "@mantine/core";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const HeaderComponent = () => {
+  const nav = useNavigate();
+  const clickHandler = () => {
+    console.log("clicked");
+    nav("/cart");
+  };
   return (
     <Container size="xl" className="py-5">
       <Group justify="space-between">
-        <h1 className="text-[25px] font-semibold">Shopping Cart</h1>
-        <div className="relative">
+        <Link to="/" className="text-[25px] font-semibold">
+          Shopping Cart
+        </Link>
+        <div onClick={clickHandler} className="relative cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

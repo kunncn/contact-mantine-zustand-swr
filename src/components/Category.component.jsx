@@ -1,6 +1,6 @@
 import { Container, Group, Skeleton, Stack } from "@mantine/core";
 import useSWR from "swr";
-import { fetcher } from "../util/data";
+import { fetcher } from "../util/util";
 
 const CategoryComponent = () => {
   const { data, isLoading } = useSWR("/api/categories", fetcher);

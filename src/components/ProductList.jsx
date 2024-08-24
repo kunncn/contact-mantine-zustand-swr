@@ -16,7 +16,7 @@ const ProductList = () => {
   const { data, isLoading } = useSWR("/api/products", fetcher);
 
   return (
-    <div className={`${isLoading && "flex justify-center items-center"}`}>
+    <div className={`${isLoading && "flex justify-center items-center"} pb-10`}>
       {isLoading && (
         <Loader color="blue" size={75} className="mx-auto h-full my-auto" />
       )}

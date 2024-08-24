@@ -1,4 +1,11 @@
-import { Breadcrumbs, Container, Group, Stack } from "@mantine/core";
+import {
+  Breadcrumbs,
+  Button,
+  Container,
+  Flex,
+  Group,
+  Stack,
+} from "@mantine/core";
 import { HeaderComponent } from "../components";
 import { Link } from "react-router-dom";
 
@@ -35,27 +42,90 @@ const CartPage = () => {
     </Link>
   ));
   return (
-    <>
-      <HeaderComponent />
-      <Container size={"xl"} className="py-3">
-        <Breadcrumbs>{breadcrumbs}</Breadcrumbs>
-        <Stack>
-          {data && (
-            <>
-              {data.map((product) => (
-                <Group key={product.id} className="border  border-gray-300 p-2">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="max-w-[80px] "
-                  />
-                </Group>
-              ))}
-            </>
-          )}
+    <div className="w-full h-screen flex flex-col">
+      <div className="flex-grow">
+        <HeaderComponent />
+        <Container size={"xl"} className="py-3 h-[90%]">
+          <Stack className="h-full">
+            <Breadcrumbs>{breadcrumbs}</Breadcrumbs>
+            <Group justify="center" align="start" className="h-full">
+              <Stack className="max-w-[900px] h-full  overflow-y-scroll">
+                {data && (
+                  <>
+                    {data.map((product) => (
+                      <Flex
+                        gap={"lg"}
+                        align="center"
+                        key={product.id}
+                        className="border border-gray-300 p-2 justify-around"
+                      >
+                        <img
+                          src={product.image}
+                          alt={product.title}
+                          className="max-w-[80px] "
+                        />
+                        <Stack
+                          gap={"xs"}
+                          className="max-w-[300px] md:max-w-full"
+                        >
+                          <p className="text-md font-semibold ">
+                            {product.title}
+                          </p>
+                          <Group>
+                            <p>{"$" + product.price.toFixed(1)}</p>
+                            <Group className="ms-auto" gap={"xs"}>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="size-6"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                />
+                              </svg>
+                              <span>1</span>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="size-6"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                />
+                              </svg>
+                            </Group>
+                          </Group>
+                        </Stack>
+                        <p className="text-md font-semibold">
+                          {"$" + product.price.toFixed(1)}
+                        </p>
+                      </Flex>
+                    ))}
+                  </>
+                )}
+              </Stack>
+            </Group>
+          </Stack>
+        </Container>
+      </div>
+      <Container size="xl" className="py-3 bg-white mt-auto w-full">
+        <Stack align="end" gap={"xs"}>
+          <h1>Total</h1>
+          <p>{"$" + 109.95}</p>
+          <Button>Order Now</Button>
         </Stack>
       </Container>
-    </>
+    </div>
   );
 };
 
